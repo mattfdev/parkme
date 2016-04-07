@@ -1,0 +1,32 @@
+{
+    "location":
+    [
+	{
+	    _id: 1,
+	    "lat": -73.000000,
+	    "lon": 49.000000,
+	    "landlord": 1,
+	    "price_hour": 2.99,
+	    "price_day": 10.00,
+	    "price_month": 150.00 
+	},
+	{
+	    _id:2,
+	    "lat": -74.00000,
+	    "lon": 49.200000,
+	    "landlord": 2,
+	    "price_hour": 2.99,
+	    "price_day": 10.00,
+	    "price_month": 150.00 
+	},
+	{
+	    _id: 3,
+	    "lat": -54.0000,
+	    "lon": 72.000,
+	    "landlord": 1,
+	    "price_hour": 12.99,
+	    "price_day": 96.00,
+	    "price_month": 2688.00 
+	}
+    ]
+}
