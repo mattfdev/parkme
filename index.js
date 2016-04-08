@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
 var Store = require("jfs");
-var db = new Store("db");
+var db = new Store("db", {pretty:true});
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -24,6 +24,17 @@ app.get("/user-login", function(req, res) {
 	db.get("users", function(err, obj){
 		
 		res.status(200).json(obj);
+	});
+});
+
+app.post("/user-signup", function(req, res) {
+
+	var newUser = req.body;
+	var obj = db.getSync("users");
+	newUser._id = obj.users.length + 1;
+	obj.users.push( newUser );
+	db.save("users", obj, function(err){
+		res.end();
 	});
 });
 

@@ -2,12 +2,13 @@ window.onload = function() {
 
 	if( sessionStorage.getItem("username") == null ){
 	
-		var html = '<a href="#/login">Login</a>';
+		var html = '<li><a href="#/signup">Sign Up</a></li>'
+		html += '<li><a href="#/login">Login</a></li>';
 		document.getElementById( "userCheck" ).innerHTML = html;		
 	}
 	else {
 	
-		var html = '<a href="#" onclick="return logout();">Logout</a>';
+		var html = '<li><a href="#" onclick="return logout();">Logout</a></li>';
 		document.getElementById( "userCheck" ).innerHTML = html;	
 	}
 }

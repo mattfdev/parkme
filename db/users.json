@@ -1,23 +1,34 @@
 {
-    "users":
-    [
-	{
-	    "_id": 1,
-		"username": "SadClown",
-		"password": "encryptlater",
-		"email": "sadclown@clowns.com",
-	    "first": "Sad",
-	    "last": "Clown",
-	    "rentals": [1, 2]
-	},
-	{
-	    "_id": 2,
-		"username": "CPS630_Overlord",
-		"password": "encryptlater2",
-		"email": "",
-	    "first": "Nhan",
-	    "last": "Tran",
-	    "rentals": []
-	}
-    ]
+  "users": [
+    {
+      "_id": 1,
+      "username": "sadclown",
+      "password": "encryptlater",
+      "email": "sadclown@clowns.com",
+      "first": "Sad",
+      "last": "Clown",
+      "rentals": [
+        1,
+        2
+      ]
+    },
+    {
+      "_id": 2,
+      "username": "cps630_overlord",
+      "password": "encryptlater2",
+      "email": "hisemail@places.com",
+      "first": "Nhan",
+      "last": "Tran",
+      "rentals": []
+    },
+    {
+      "_id": 3,
+      "username": "sadclown2",
+      "password": "encryptlater3",
+      "email": "email@email.com",
+      "first": "Jeff",
+      "last": "Jefferson",
+      "rentals": []
+    }
+  ]
 }
