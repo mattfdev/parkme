@@ -11,7 +11,7 @@
 	    "price_day": 10.00,
 	    "price_month": 150.00,
 		"parking_type": "Driveway",
-		"info": "It's a driveway.",
+		"info": "It's a driveway."
 	},
 	{
 	    "_id": 2,

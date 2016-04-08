@@ -4,9 +4,25 @@ var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
 
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+
+    // intercept OPTIONS method
+    if ('OPTIONS' == req.method) {
+      res.send(200);
+    }
+    else {
+      next();
+    }
+};
+
 var CONTACTS_COLLECTION = "contacts";
 
 var app = express();
+app.use(allowCrossDomain);
+app.use(app.router);
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 app.set('port', (process.env.PORT || 5000));
@@ -46,13 +62,7 @@ function handleError(res, reason, message, code) {
  */
 
 app.get("/contacts", function(req, res) {
-    db.collection(CONTACTS_COLLECTION).find({}).toArray(function(err, docs) {
-	if (err) {
-	    handleError(res, err.message, "Failed to get contacts.");
-	} else {
-	    res.status(200).json(docs);
-	}
-    });
+    res.status(200).json({'test': 'it works'});
 });
 
 app.post("/contacts", function(req, res) {
