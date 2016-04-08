@@ -1,0 +1,26 @@
+<div id="mapView" ng-controller="MapController">
+<div class = "row">
+  <div class="col-md-12">
+      <form class="form-inline" ng-submit="submit()">
+          <div class="form-group" style="width:50%">
+              <input type="text" class="form-control" id="destination" name="city" placeholder="Input a Destination" style="width:100%">
+          </div>
+          <button type="button" class="btn btn-default" value="click" onclick="getLocation(); return false;">Submit</button>
+          <button type="button" class="btn btn-default" id="geolocate" aria-label="Left Align">
+            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+          </button>
+          <button type="button" class="btn btn-default" id="geolocate" aria-label="Left Align">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            Post Parking Spot
+          </button>
+      </form>
+ </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-md-12">
+              <div id="googleMap" style="width:100%;height:500px;"></div>
+              <br>
+          </div>
+</div>
+</div>

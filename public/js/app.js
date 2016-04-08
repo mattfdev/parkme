@@ -2,8 +2,8 @@ angular.module("contactsApp", ['ngRoute'])
 .config(function($routeProvider) {
     $routeProvider
 	.when("/", {
-	    templateUrl: "list.html",
-	    controller: "ListController"
+	    templateUrl: "map.html",
+	    controller: "MapController"
 	})
 	.when("/login", {
 		
@@ -16,6 +16,38 @@ angular.module("contactsApp", ['ngRoute'])
 		controller: "SignupController"
 	})
 })
+.controller('MapController', ['$scope', '$http', function($scope, $http) {
+
+    document.getElementById("geolocate").onclick = function(){
+        var geoSuccess = function(position) {
+            mapCoordinates(position);
+        };
+        var geoError = function(error) {
+            console.log('Error occurred. Error code: ' + error.code);
+        };
+        navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
+    };
+
+
+    function mapCoordinates(postition) {
+        function initialize() {
+        var myCenter= new google.maps.LatLng(postition.coords.latitude,postition.coords.longitude);
+        var mapProp = {
+            center:myCenter,
+            zoom:12,
+            mapTypeId:google.maps.MapTypeId.ROADMAP
+        };
+        var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+    
+        var marker=new google.maps.Marker({
+            position:myCenter,
+        });
+
+        marker.setMap(map);
+    }
+        initialize();
+    }
+}])
 .controller('LoginController', ['$scope', '$http', function($scope, $http) {
 
 		$scope.submit = function() {
