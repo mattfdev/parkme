@@ -26,6 +26,7 @@ angular.module("contactsApp", ['ngRoute'])
 			if( $scope.username && $scope.password ) {
 				
 				user = $scope.username;
+				user = user.toLowerCase();
 				pass = $scope.password;
 				
 				$http.get('/user-login')
