@@ -38,15 +38,6 @@
       "first": "",
       "last": "",
       "rentals": []
-    },
-    {
-      "_id": 5,
-      "username": "sadclown3",
-      "password": "password",
-      "email": "email",
-      "first": "",
-      "last": "",
-      "rentals": []
     }
   ]
 }
