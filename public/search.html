@@ -1,0 +1,22 @@
+<section ng-controller="SearchController">
+	<form onsubmit="return false;">
+		<span>Maximum Distance (km) (0 for any)</span>
+		<input type="number" ng-model="max_distance"/><br>
+		<input type="text" id="location_search" placeholder="Enter city."><br>
+	</form>
+				
+	<div class="parking-spots" style="background:#FFBBBB">
+		<h2> All Parking Spots <h2>
+		<div ng-include="'templates/parkingSpot.html'" ng-repeat="spot in parkingSpots"></div>
+	</div>
+	
+	<div class="parking-spots" style="background:#AAFFAA">
+		<h2> Available Spots <h2>
+		<div ng-include="'templates/parkingSpot.html'" ng-repeat="spot in parkingSpots | notTaken"></div>
+	</div>
+	
+	<div class="parking-spots" style="background: #BBBBFF">
+		<h2> Close By Spots <h2>
+		<div ng-include="'templates/parkingSpot.html'" ng-repeat="spot in parkingSpots | proximity: max_distance"></div>
+	</div>
+</section>
