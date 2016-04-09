@@ -1,6 +1,7 @@
 angular.module("parkmeApp")
 .controller('MapController', ['$scope', '$http', function($scope, $http) {
     var geocoder = new google.maps.Geocoder;
+    var map;
     //geolocation button
     document.getElementById("geolocate").onclick = function(){
         var geoSuccess = function(position) {
@@ -18,22 +19,34 @@ angular.module("parkmeApp")
         function initialize() {
         var mapProp = {
             center:postition,
-            zoom:15,
+            zoom:16,
             mapTypeId:google.maps.MapTypeId.ROADMAP
         };
-        var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+        map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
     
         var marker=new google.maps.Marker({
             position:postition,
         });
 
         marker.setMap(map);
-    }
-    initialize();
+        }
+        initialize();
     }
     
+    var input = document.getElementById('destination');
+	var autocomplete = new google.maps.places.Autocomplete(input);
+	google.maps.event.addListener(autocomplete, 'autocompleted', updatePosition); 
+
+	function updatePosition(){
+			// Extract the address components from the Google place result.
+			var place = autocomplete.getPlace();
+			if (place){
+				mapCoordinates(place.geometry.location);
+			}
+		}
+    
     $scope.submit = function(){
-        var address = $scope.destination;
+        var address = input.value;
         function codeAddress() {
         geocoder.geocode( { 'address': address}, function(results, status) {
             if (status === google.maps.GeocoderStatus.OK) {
