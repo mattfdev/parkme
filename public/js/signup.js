@@ -5,15 +5,17 @@ angular.module("parkmeApp")
 			
 			var user = "";
 			var pass = "";
+			var pass2 = "";
 			var firstname = "";
 			var lastname = "";
 			var email = "";
 			
-			if( $scope.username && $scope.password && $scope.email ) {
+			if( $scope.username && $scope.password && $scope.password2 && $scope.email ) {
 				
 				user = $scope.username;
 				user = user.toLowerCase();
 				pass = $scope.password;
+				pass2 = $scope.password2;
 				email = $scope.email;
 				if( $scope.firstname ){
 					
@@ -39,7 +41,7 @@ angular.module("parkmeApp")
 							}
 						} );
 
-						var validObj = validateSignup( match, pass );
+						var validObj = validateSignup( match, pass, pass2 );
 
 						if( validObj.valid ){
 							
@@ -78,7 +80,7 @@ angular.module("parkmeApp")
 		};
 }]);
 
-function validateSignup( match, password ) {
+function validateSignup( match, password, password2 ) {
 
 	var valid = true;
 	var alert = "";
@@ -91,6 +93,11 @@ function validateSignup( match, password ) {
 	if( password.length < 6 || password.length > 20 ){
 		
 		alert += "\nPassword not between 6 and 20 characters.";
+		valid = false;
+	}
+	if( password != password2 ){
+		
+		alert += "\nPasswords do not match.";
 		valid = false;
 	}
 	
