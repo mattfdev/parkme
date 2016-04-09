@@ -16,6 +16,7 @@ window.onload = function() {
 function logout() {
 	
 	sessionStorage.removeItem( "username" );
+	sessionStorage.removeItem( "user._id" );
 	window.location.href = "#/";
 	location.reload();
 }

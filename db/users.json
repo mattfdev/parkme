@@ -29,6 +29,15 @@
       "first": "Jeff",
       "last": "Jefferson",
       "rentals": []
+    },
+    {
+      "_id": 4,
+      "username": "new_user",
+      "password": "encryptlater4",
+      "email": "newusersemail@gmail.com",
+      "first": "",
+      "last": "",
+      "rentals": []
     }
   ]
 }
