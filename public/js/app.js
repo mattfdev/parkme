@@ -15,4 +15,9 @@ angular.module("parkmeApp", ['ngRoute'])
 		templateUrl: "signup.html",
 		controller: "SignupController"
 	})
+	.when("/search", {
+		
+		templateUrl: "search.html",
+		controller: "SearchController"
+	})
 })

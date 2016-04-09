@@ -21,8 +21,8 @@ app.get('/', function(request, response) {
 
 app.get("/user-login", function(req, res) {
 
-	db.get("users", function(err, obj){
-		
+	db.get("users", function(err, obj)
+	{
 		res.status(200).json(obj);
 	});
 });
@@ -35,6 +35,14 @@ app.post("/user-signup", function(req, res) {
 	obj.users.push( newUser );
 	db.save("users", obj, function(err){
 		res.end();
+	});
+});
+
+app.get("/parkingSpots", function(req, res) 
+{
+	db.get("spots", function(err, obj)
+	{
+		res.status(200).json(obj);
 	});
 });
 

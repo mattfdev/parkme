@@ -25,3 +25,10 @@ body { /* Took this from index.html. I assume this was from the template stuff? 
     top: 0;
     z-index:99;
 }
+
+div.parking-spots
+{
+	 margin: 15px;
+	 padding: 10px; 
+	 border: 1px solid #000000;
+}
