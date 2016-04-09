@@ -1,11 +1,24 @@
 <!-- Post Parking Spot Popup window -->
 <div class="panel panel-default" id="postbox">
-	<div class="panel-heading">Post Parking Spot</div>
+	<div class="panel-heading"><strong>Post Parking Spot</strong></div>
 	<div class="panel-body">
 		<form ng-submit="submit()" ng-controller="PostSpotController">
-		  TODO: Post post parking spot inputs<br>
-		  <input class="form-control width-50" type="text" ng-model="todo"/><br>
-		  <input class="btn btn-default" type="submit" id="submit" value="Post"/>
+			Location/Address<br>
+			<input class="form-control" id="location" type="text" ng-model="location"/><br>
+			Pricing (Default: 0.00)<br>
+			$ Per Hour<input id="priceHour" class="form-control width-50" step='0.01' type="number" value="0.00" ng-model="priceHour"/><br>
+			$ Per Day<input id="priceDay" class="form-control width-50" step='0.01' type="number" value="0.00" ng-model="priceDay"/><br>
+			$ Per Month<input id="priceMonth" class="form-control width-50" step='0.01' type="number" value="0.00" ng-model="priceMonth"/><br>
+			Parking Type<br>
+			<select class="form-control" ng-model="type">
+				<option value="Driveway" selected>Driveway</option>
+				<option value="Garage">Garage</option>
+				<option value="Underground">Underground</option>
+				<option value="Street">Street</option>
+			</select><br>
+			Information/Details<br>
+			<textarea class="form-control" rows="5" ng-model="info"/><br>
+			<input class="btn btn-default" type="submit" id="submit" value="Post"/>
 		</form>
 	</div>
 </div>

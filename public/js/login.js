@@ -12,7 +12,7 @@ angular.module("parkmeApp")
 				user = user.toLowerCase();
 				pass = $scope.password;
 				
-				$http.get('/user-login')
+				$http.get('/userLogin')
 					.success( function( res ){
 						
 						var users = res.users;

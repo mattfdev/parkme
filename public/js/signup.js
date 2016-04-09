@@ -28,7 +28,7 @@ angular.module("parkmeApp")
 				
 				var match = false;
 
-				$http.get('/user-login')
+				$http.get('/userLogin')
 					.success( function( res ){
 
 						var users = res.users;
@@ -48,7 +48,7 @@ angular.module("parkmeApp")
 							var newUser = { "_id": 0, "username": user, "password": pass, "email": email, "first": firstname, "last": lastname, rentals: [] };
 							//id determined during post
 							
-							$http.post('/user-signup', newUser)
+							$http.post('/userSignup', newUser)
 								.success( function( response ){
 									
 									console.log( "New user signed up: " + user );

@@ -1,6 +1,5 @@
-body { /* Took this from index.html. I assume this was from the template stuff? Probably don't need the min-height. -James */
+body {
 	
-    min-height: 2000px;
     padding-top: 70px;
 }
 

@@ -19,7 +19,7 @@ app.get('/', function(request, response) {
     response.render('index');
 });
 
-app.get("/user-login", function(req, res) {
+app.get("/userLogin", function(req, res) {
 
 	db.get("users", function(err, obj)
 	{
@@ -27,7 +27,7 @@ app.get("/user-login", function(req, res) {
 	});
 });
 
-app.post("/user-signup", function(req, res) {
+app.post("/userSignup", function(req, res) {
 
 	var newUser = req.body;
 	var obj = db.getSync("users");
@@ -43,6 +43,17 @@ app.get("/parkingSpots", function(req, res)
 	db.get("spots", function(err, obj)
 	{
 		res.status(200).json(obj);
+	});
+});
+
+app.post("/postParkingSpot", function(req, res) {
+
+	var newSpot = req.body;
+	var obj = db.getSync("spots");
+	newSpot._id = obj.location.length + 1;
+	obj.location.push( newSpot );
+	db.save("spots", obj, function(err){
+		res.status(200).json( obj.location[ obj.location.length - 1 ] );
 	});
 });
 
