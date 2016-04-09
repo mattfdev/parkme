@@ -46,5 +46,35 @@ angular.module("parkmeApp")
         codeAddress();
     }
     
-    
+	//Post Parking Spot button
+    document.getElementById( "postspot" ).onclick = function(){
+
+		if( sessionStorage.getItem( "user._id" ) == null ){
+			
+			alert( "Please login before posting." )
+			window.location.href = "#/login";
+			location.reload();
+		}
+		else{
+			
+			var postbox = document.getElementById( "postbox" ),
+				dimmer = document.createElement( "div" );
+
+			dimmer.style.width =  "100%";
+			dimmer.style.height = "100%";
+			dimmer.className = 'dimmer';
+
+			dimmer.onclick = function(){
+				document.body.removeChild( this );   
+				postbox.style.visibility = 'hidden';
+			}
+
+			document.body.appendChild( dimmer );
+
+			postbox.style.visibility = 'visible';
+			postbox.style.top = "10%";
+			postbox.style.left = "30%";
+			return false;
+		}
+	}
 }])

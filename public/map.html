@@ -1,3 +1,16 @@
+<!-- Post Parking Spot Popup window -->
+<div class="panel panel-default" id="postbox">
+	<div class="panel-heading">Post Parking Spot</div>
+	<div class="panel-body">
+		<form ng-submit="submit()" ng-controller="PostSpotController">
+		  TODO: Post post parking spot inputs<br>
+		  <input class="form-control width-50" type="text" ng-model="todo"/><br>
+		  <input class="btn btn-default" type="submit" id="submit" value="Post"/>
+		</form>
+	</div>
+</div>
+
+<!-- Map -->
 <div id="mapView" ng-controller="MapController">
 <div class = "row">
   <div class="col-md-12">
@@ -9,11 +22,12 @@
           <button type="button" class="btn btn-default" id="geolocate" aria-label="Left Align">
             <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
           </button>
-          <button type="button" class="btn btn-default" id="geolocate" aria-label="Left Align">
+          <button type="button" class="btn btn-default" id="postspot" aria-label="Left Align">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             Post Parking Spot
           </button>
       </form>
+	  
  </div>
 </div>
 <br>
