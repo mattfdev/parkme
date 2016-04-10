@@ -2,8 +2,8 @@
   "location": [
     {
       "_id": 1,
-      "lat": -73,
-      "lon": 49,
+      "lat": 43.642566,
+      "lon": -79.387056,
       "landlord": 1,
       "tenant": 1,
       "price_hour": 2.99,
@@ -14,8 +14,8 @@
     },
     {
       "_id": 2,
-      "lat": -74,
-      "lon": 49.2,
+      "lat": 43.718242,
+      "lon": -79.724143,
       "landlord": 2,
       "tenant": 1,
       "price_hour": 0,
@@ -26,8 +26,8 @@
     },
     {
       "_id": 3,
-      "lat": -54,
-      "lon": 72,
+      "lat": 43.657877,
+      "lon": -79.380456,
       "landlord": 1,
       "tenant": 0,
       "price_hour": 12.99,
