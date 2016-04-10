@@ -50,6 +50,11 @@ app.post("/postParkingSpot", function(req, res) {
 	var obj = db.getSync("spots");
 	newSpot._id = obj.location.length + 1;
 	obj.location.push( newSpot );
+	
+	var usersObj = db.getSync("users");
+	usersObj.users[ newSpot.landlord - 1 ].spots.push( newSpot._id );
+	db.saveSync( "users", usersObj );
+	
 	db.save("spots", obj, function(err){
 		res.status(200).json( obj.location[ obj.location.length - 1 ] );
 	});

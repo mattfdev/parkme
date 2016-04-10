@@ -90,5 +90,20 @@
       "parking_type": "Underground",
       "info": "Parking at a Medical Clinic"
     }
+    {
+      "_id": 7,
+      "address": "College Station - Northbound Platform, Toronto, ON, Canada",
+      "lat": 43.6613247,
+      "lon": -79.38307459999999,
+      "landlord": 1,
+      "username": "sadclown",
+      "email": "sadclown@clowns.com",
+      "tenant": 0,
+      "price_hour": 3.99,
+      "price_day": 7.99,
+      "price_month": 59.99,
+      "parking_type": "Underground",
+      "info": "Parking near College Station. If you want more details, continue reading the rest of this, because I plan to write a lot into this text box. It's not really details, but this box says details so it technically counts as details, which is the best kind of correct."
+    }
   ]
 }

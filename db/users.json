@@ -7,9 +7,12 @@
       "email": "sadclown@clowns.com",
       "first": "Sad",
       "last": "Clown",
-      "rentals": [
+      "spots": [
         1,
-        2
+        3,
+        5,
+        6,
+        7
       ]
     },
     {
@@ -19,7 +22,9 @@
       "email": "hisemail@places.com",
       "first": "Nhan",
       "last": "Tran",
-      "rentals": []
+      "spots": [
+        2
+      ]
     },
     {
       "_id": 3,
@@ -28,7 +33,7 @@
       "email": "email@email.com",
       "first": "Jeff",
       "last": "Jefferson",
-      "rentals": []
+      "spots": []
     },
     {
       "_id": 4,
@@ -37,7 +42,9 @@
       "email": "newusersemail@gmail.com",
       "first": "",
       "last": "",
-      "rentals": []
+      "spots": [
+        4
+      ]
     }
   ]
 }

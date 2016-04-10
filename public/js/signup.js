@@ -45,7 +45,7 @@ angular.module("parkmeApp")
 
 						if( validObj.valid ){
 							
-							var newUser = { "_id": 0, "username": user, "password": pass, "email": email, "first": firstname, "last": lastname, rentals: [] };
+							var newUser = { "_id": 0, "username": user, "password": pass, "email": email, "first": firstname, "last": lastname, "spots": [] };
 							//id determined during post
 							
 							$http.post('/userSignup', newUser)
