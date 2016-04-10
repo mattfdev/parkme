@@ -56,11 +56,56 @@ angular.module("parkmeApp")
 		return return_list;
 	};
 })
+.filter('pricing', function() 
+{
+	return function(orig_list, pref)
+	{
+		var return_list = undefined;
+		
+		if (orig_list && pref)
+		{
+			var num_spots = orig_list.length;
+			var filtered_list = [];
+			var i, spot;
+			
+			for (i = 0; i < num_spots; i++) 
+			{
+				spot = orig_list[i];
+				if 
+				(	
+					// Check if spot has a listed price for hour/day/month (if required)
+					((!pref.req_hour) || (spot.price_hour != 0)) &&
+					((!pref.req_day) || (spot.price_day != 0)) &&
+					((!pref.req_month) || (spot.price_month != 0)) &&
+					
+					// Check if spot's price for hour/day/month is below maximum allowed (if required)
+					((pref.max_price_hour == 0) || (spot.price_hour <= pref.max_price_hour)) &&
+					((pref.max_price_day == 0) || (spot.price_day <= pref.max_price_day)) &&
+					((pref.max_price_month == 0) || (spot.price_month <= pref.max_price_month))
+				)
+				{
+					filtered_list.push(spot);
+				}
+			}
+			return_list = filtered_list;
+		}
+		return return_list;
+	};
+})
 .controller('MapController', ['$scope', '$http','$filter', function($scope, $http) {
     var geocoder = new google.maps.Geocoder;
     var map;
     $scope.max_distance = 5;
 	$scope.parkingSpots = [];
+    $scope.prices =
+		{
+			req_hour:false,
+			req_day:false,
+			req_month:false,
+			max_price_hour:0,
+			max_price_day:0,
+			max_price_month:0
+		}
     //geolocation button
     document.getElementById("geolocate").onclick = function(){
         var geoSuccess = function(position) {
@@ -105,6 +150,16 @@ angular.module("parkmeApp")
 				}
 				$scope.$digest();
 			}
+		}
+        
+        $scope.change = function()
+		{
+			if (!$scope.prices.max_price_hour || isNaN($scope.prices.max_price_hour))
+				$scope.prices.max_price_hour = 0;
+			if (!$scope.prices.max_price_day || isNaN($scope.prices.max_price_day))
+				$scope.prices.max_price_day = 0;
+			if (!$scope.prices.max_price_month || isNaN($scope.prices.max_price_month))
+				$scope.prices.max_price_month = 0;
 		}
         
         // Helper functions below.
