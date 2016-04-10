@@ -18,6 +18,7 @@ angular.module("parkmeApp")
 						var users = res.users;
 						var match = false;
 						var id = 0;
+						var email = "";
 						
 						angular.forEach( users, function( value, key ){
 							
@@ -25,6 +26,7 @@ angular.module("parkmeApp")
 								
 								match = true;
 								id = value._id;
+								email = value.email;
 							}
 						} );
 						
@@ -34,8 +36,8 @@ angular.module("parkmeApp")
 							
 							sessionStorage.setItem( "username", user );
 							sessionStorage.setItem( "user._id", id );
+							sessionStorage.setItem( "email", email );
 							window.location.href = "#/";
-							location.reload();
 						}
 						else{
 							

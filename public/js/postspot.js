@@ -63,7 +63,10 @@ angular.module("parkmeApp")
 		if( $scope.type ){
 			
 			type = $scope.type;
-			var newSpot = { "_id": id, "lat": lat, "lon": lng, "landlord": landlord, "tenant": tenant,
+			var username = sessionStorage.getItem( "username" );
+			var email = sessionStorage.getItem( "email" );
+			
+			var newSpot = { "_id": id, "address": input.value, "lat": lat, "lon": lng, "landlord": landlord, "username": username, "email": email, "tenant": tenant,
 							"price_hour": hour, "price_day": day, "price_month": month, 
 							"parking_type": type, "info": info };
 			addSpotToDB( newSpot );
@@ -83,7 +86,7 @@ angular.module("parkmeApp")
 				console.log( "New spot posted: " + response._id );
 				alert( "New parking spot added successfully! Reloading search." );
 				
-				window.location.href = "#/search";
+				location.reload();
 				dimmer = document.getElementById( "dimmer" );
 				document.body.removeChild( dimmer );
 			} )

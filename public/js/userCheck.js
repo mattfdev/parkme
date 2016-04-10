@@ -17,6 +17,7 @@ function logout() {
 	
 	sessionStorage.removeItem( "username" );
 	sessionStorage.removeItem( "user._id" );
+	sessionStorage.removeItem( "email" );
 	window.location.href = "#/";
 	location.reload();
 }
