@@ -8,6 +8,11 @@ body {
 	width: 44%;
 }
 
+.width-90 {
+
+	width: 90%;
+}
+
 #postbox{
 	
     visibility: hidden;
