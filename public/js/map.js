@@ -133,7 +133,7 @@ angular.module("parkmeApp")
 		function error(response) 
 		{
 			console.log(response);
-			alert("Unable to load parking spots!");
+			//alert("Unable to load parking spots!");
 		});
 		
 	$scope.updateSpotDistances = function()
