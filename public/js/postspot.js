@@ -81,19 +81,16 @@ angular.module("parkmeApp")
 			.success( function( response ){
 				
 				console.log( "New spot posted: " + response._id );
-				alert( "New parking spot added successfully! Reloading Page." );
+				alert( "New parking spot added successfully! Reloading search." );
+				
 				window.location.href = "#/search";
-				location.reload();
+				dimmer = document.getElementById( "dimmer" );
+				document.body.removeChild( dimmer );
 			} )
 			.error( function( response ){
 				
 				alert( "Error posting parking spot. Consult admin/developer." );
 			});
-	}
-	
-	function reload() {
-		
-		window.location.href = "#/search";
 	}
 	
 	function setTwoNumberDecimal(event) {

@@ -40,10 +40,8 @@ app.post("/userSignup", function(req, res) {
 
 app.get("/parkingSpots", function(req, res) 
 {
-	db.get("spots", function(err, obj)
-	{
-		res.status(200).json(obj);
-	});
+	var obj = db.getSync("spots");
+	res.status(200).json(obj);
 });
 
 app.post("/postParkingSpot", function(req, res) {

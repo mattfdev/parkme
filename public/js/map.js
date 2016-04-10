@@ -73,6 +73,7 @@ angular.module("parkmeApp")
 			var postbox = document.getElementById( "postbox" ),
 				dimmer = document.createElement( "div" );
 
+			dimmer.setAttribute( "id", "dimmer" );
 			dimmer.style.width =  "100%";
 			dimmer.style.height = "100%";
 			dimmer.className = 'dimmer';
