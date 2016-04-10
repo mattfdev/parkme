@@ -98,6 +98,7 @@ angular.module("parkmeApp")
 	
     var geocoder = new google.maps.Geocoder;
     var map;
+    $scope.makerInfoArray = [];
     $scope.max_distance = 5;
 	$scope.parkingSpots = [];
 	$scope.filteredSpots = [];
@@ -229,9 +230,9 @@ angular.module("parkmeApp")
 	
 	//Places markers for filtered list
 	function placeMarkers(){
-		
+		var spot,spotPosition;
 		num_spots = $scope.filteredSpots.length;
-		for (i = 0; i < num_spots; i++) 
+		for (var i = 0; i < num_spots; i++) 
 		{
 			spot = $scope.filteredSpots[i];
 			spotPosition = {lat:spot.lat, lng:spot.lon};
@@ -241,8 +242,21 @@ angular.module("parkmeApp")
 				position: spotPosition,
 				icon: image
 			});
-			
+            var contentString = '<div id="content">'+ '<h2 class="address">'+spot.lat+', '+spot.lon+'</h2>'+
+            '<h4 class="parkingType"> Parking Type: '+ spot.parking_type + '</h4>'+
+            '<h4 class="landlordInfo"> Contact the landlord '+ 'XXXX' +' at ' + 'XXX' + ' for rental'+ '</h4>'+
+            '<p class="parkingInfo"> Additonal Info: '+ spot.info + '</p>'+
+            '<p class="parkingPricing"> This spot costs $'+spot.price_hour+' an hour '+
+            'or is available at a discounted rate of $' + spot.price_day + ' a day or $' + spot.price_month +
+            ' a month </p> </div>';
+            var infowindow = new google.maps.InfoWindow({
+                                        content: contentString
+                                    });
 			marker.setMap(map);
+            marker.addListener('click', function() {
+                        infowindow.open(map, this);
+                    });
+
 		}
 	}
 
