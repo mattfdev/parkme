@@ -242,13 +242,13 @@ angular.module("parkmeApp")
 				position: spotPosition,
 				icon: image
 			});
-            var contentString = '<div id="content">'+ '<h2 class="address">'+spot.lat+', '+spot.lon+'</h2>'+
-            '<h4 class="parkingType"> Parking Type: '+ spot.parking_type + '</h4>'+
-            '<h4 class="landlordInfo"> Contact the landlord '+ 'XXXX' +' at ' + 'XXX' + ' for rental'+ '</h4>'+
+            var contentString = '<div id="content">'+ '<h3 class="address"> Address:<a href="https://maps.google.com/?q='+spot.address +'">'+ spot.address+'</a> </h3>'+
+            '<h5 class="parkingType"> Parking Type: '+ spot.parking_type + '</h5>'+
+            '<h5 class="landlordInfo"> Contact the user '+ spot.username +' at <a href="mailto:'+spot.email+'">'+spot.email+'</a>' + ' for rental'+ '</h5>'+
             '<p class="parkingInfo"> Additonal Info: '+ spot.info + '</p>'+
-            '<p class="parkingPricing"> This spot costs $'+spot.price_hour+' an hour '+
-            'or is available at a discounted rate of $' + spot.price_day + ' a day or $' + spot.price_month +
-            ' a month </p> </div>';
+            '<p class="parkingPricing"> This spot costs <strong> $'+spot.price_hour+' an hour </strong>'+
+            'or is available at a discounted rate of <strong> $' + spot.price_day + ' a day or $' + spot.price_month +
+            ' a month </strong> </p> </div>';
             var infowindow = new google.maps.InfoWindow();
 			bindInfoWindow(marker, map, infowindow, contentString); 
 			marker.setMap(map);
