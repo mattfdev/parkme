@@ -1,0 +1,40 @@
+<div class="col-md-12" ng-controller="CheckSettingsController">
+	<span>Username: </span>
+	<span id="username"></span>
+	<br>
+	<span>Email: </span>
+	<span id="email"></span>
+	<br>
+	<span>First Name: </span>
+	<span id="first"></span>
+	<br>
+	<span>Last Name: </span>
+	<span id="last"></span>
+	<br>
+	<div id="changePasswordField" style="display:none;">
+		<form ng-submit="changePassword()"><br>
+			Current Password * <span id="previousPasswordCheck" style="white-space:nowrap;"></span>
+			<input class="form-control width-50" type="password" ng-model="currentPass" /><br>
+			New Password * <span id="newPasswordCheck" style="white-space:nowrap;"></span>
+			<input class="form-control width-50" type="password" ng-model="newPass" /><br>
+			Re-enter New Password * <span id="newPasswordCheck2" style="white-space:nowrap;"></span>
+			<input class="form-control width-50" type="password" ng-model="newPass2" /><br>
+			<input class="btn btn-default" type="submit" id="submit" value="Submit" />
+		</form>
+	</div>
+	<div id="changeEmailField" style="display:none;">
+		<form ng-submit="changeEmail()"><br>
+			Current Email * <span id="previousEmailCheck" style="white-space:nowrap;"></span>
+			<input class="form-control width-50" type="text" ng-model="currentEmail" /><br>
+			New Email * <span id="newEmailCheck" style="white-space:nowrap;"></span>
+			<input class="form-control width-50" type="text" ng-model="newEmail" /><br>
+			<input class="btn btn-default" type="submit" id="submit" value="Submit" />
+		</form>
+	</div>
+	<form ng-submit="showPassword()">
+		<br><input class="btn btn-default" type="submit" id="showPassword" value="Change Password" style="display:block;"/>
+	</form>
+	<form ng-submit="showEmail()">
+		<br><input class="btn btn-default" type="submit" id="showEmail" value="Change Email" style="display:block;" />
+	</form>
+</div>

@@ -30,10 +30,12 @@
       "_id": 3,
       "username": "sadclown2",
       "password": "encryptlater3",
-      "email": "email@email.com",
+      "email": "Sadclown@hotmail.ca",
       "first": "Jeff",
       "last": "Jefferson",
-      "spots": []
+      "spots": [
+        8
+      ]
     },
     {
       "_id": 4,
@@ -45,6 +47,15 @@
       "spots": [
         4
       ]
+    },
+    {
+      "_id": 5,
+      "username": "mrpotatohead",
+      "password": "applesandbees",
+      "email": "mrpotatohead@hotmail.com",
+      "first": "Mr",
+      "last": "Potato",
+      "spots": []
     }
   ]
 }

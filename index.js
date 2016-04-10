@@ -60,6 +60,23 @@ app.post("/postParkingSpot", function(req, res) {
 	});
 });
 
+app.get("/accountInfo", function(req, res)
+{
+	db.get("users", function(err, obj)
+	{
+		res.status(200).json(obj);
+	});
+});
+
+app.post("/changeInfo", function(req, res){
+	var replaceUser = req.body;
+	var obj = db.getSync("users");
+	obj.users[replaceUser._id-1] = replaceUser;
+	db.save("users", obj, function(err){
+		res.end();
+	});
+});
+
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
 })

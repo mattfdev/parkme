@@ -20,4 +20,10 @@ angular.module("parkmeApp", ['ngRoute'])
 		templateUrl: "search.html",
 		controller: "SearchController"
 	})
+	.when("/settings", {
+		
+		templateUrl: "settings.html",
+		controller: "CheckSettingsController"
+	
+	})
 })

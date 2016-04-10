@@ -38,6 +38,7 @@ angular.module("parkmeApp")
 							sessionStorage.setItem( "user._id", id );
 							sessionStorage.setItem( "email", email );
 							window.location.href = "#/";
+							location.reload();
 						}
 						else{
 							

@@ -89,7 +89,7 @@
       "price_month": 0,
       "parking_type": "Underground",
       "info": "Parking at a Medical Clinic"
-    }
+    },
     {
       "_id": 7,
       "address": "College Station - Northbound Platform, Toronto, ON, Canada",
@@ -104,6 +104,21 @@
       "price_month": 59.99,
       "parking_type": "Underground",
       "info": "Parking near College Station. If you want more details, continue reading the rest of this, because I plan to write a lot into this text box. It's not really details, but this box says details so it technically counts as details, which is the best kind of correct."
+    },
+    {
+      "_id": 8,
+      "address": "3400 Weston Road, North York, ON, Canada",
+      "lat": 43.7497806,
+      "lon": -79.54356680000001,
+      "landlord": 3,
+      "username": "sadclown2",
+      "email": "Sadclown@hotmail.ca",
+      "tenant": 0,
+      "price_hour": 0.2,
+      "price_day": 10,
+      "price_month": 100,
+      "parking_type": "Driveway",
+      "info": "Thank you"
     }
   ]
 }

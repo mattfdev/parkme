@@ -2,13 +2,14 @@ window.onload = function() {
 
 	if( sessionStorage.getItem("username") == null ){
 	
-		var html = '<li><a href="#/signup">Sign Up</a></li>'
-		html += '<li><a href="#/login">Login</a></li>';
+		var html = '<li><a href="#/signup"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Sign Up</a></li>'
+		html += '<li><a href="#/login"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login</a></li>';
 		document.getElementById( "userCheck" ).innerHTML = html;		
 	}
 	else {
-	
-		var html = '<li><a href="#" onclick="return logout();">Logout</a></li>';
+		var user = sessionStorage.getItem("username");
+		var html = '<li><a href="#/settings"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> ' + user + '</a></li>'
+		html += '<li><a href="#" onclick="return logout();"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a></li>';
 		document.getElementById( "userCheck" ).innerHTML = html;	
 	}
 }
