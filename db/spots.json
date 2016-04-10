@@ -8,7 +8,7 @@
       "tenant": 1,
       "price_hour": 2.99,
       "price_day": 10,
-      "price_month": 150,
+      "price_month": 0,
       "parking_type": "Driveway",
       "info": "It's a driveway."
     },
@@ -18,7 +18,7 @@
       "lon": 49.2,
       "landlord": 2,
       "tenant": 1,
-      "price_hour": 2.99,
+      "price_hour": 0,
       "price_day": 10,
       "price_month": 150,
       "parking_type": "Garage",
@@ -31,7 +31,7 @@
       "landlord": 1,
       "tenant": 0,
       "price_hour": 12.99,
-      "price_day": 96,
+      "price_day": 0,
       "price_month": 2688,
       "parking_type": "Street",
       "info": "Street Parking."

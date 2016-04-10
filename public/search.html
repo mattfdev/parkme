@@ -1,8 +1,57 @@
 <section ng-controller="SearchController">
 	<form onsubmit="return false;">
-		<span>Maximum Distance (km) (0 for any)</span>
-		<input type="number" ng-model="max_distance"/><br>
-		<input type="text" id="location_search" placeholder="Enter city."><br>
+		<table>
+			<tr>
+				<td colspan="3">
+					<input type="text" id="location_search" placeholder="Enter city.">
+				</td>
+				<td colspan="3">
+					<span>Maximum Distance (0km for any)</span>
+					<input type="number" ng-model="max_distance"/><br>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<ul style="background:#EEEEEE; margin:2px; border:1px solid #000000">
+						<h4>Price Per Hour</h4>
+						<li>
+							<span>Required</span>
+							<input type="checkbox" name="chk_price_hour" ng-model="prices.req_hour"/>
+						</li>
+						<li>
+							<span>Maximum ($0 for any)</span>
+							<input type="number" min="0" ng-model="prices.max_price_hour" ng-change="change()"/>
+						</li>
+					<ul>
+				</td>	
+				<td colspan="2">
+					<ul style="background:#EEEEEE; margin:2px; border:1px solid #000000">
+						<h4>Price Per Day</h4>
+						<li>
+							<span>Required</span>
+							<input type="checkbox" name="chk_price_day" ng-model="prices.req_day"/>
+						</li>
+						<li>
+							<span>Maximum ($0 for any)</span>
+							<input type="number" min="0" ng-model="prices.max_price_day" ng-change="change()"/>
+						</li>
+					<ul>
+				</td>
+				<td colspan="2">
+					<ul style="background:#EEEEEE; margin:2px; border:1px solid #000000">
+						<h4>Price Per Month</h4>
+						<li>
+							<span>Required</span>
+							<input type="checkbox" name="prices.req_price_month" ng-model="prices.req_month"/>
+						</li>
+						<li>
+							<span>Maximum ($0 for any)</span>
+							<input type="number" min="0" ng-model="prices.max_price_month" ng-change="change()"/>
+						</li>
+					<ul>
+				</td>					
+			</tr>
+		</table>
 	</form>
 				
 	<div class="parking-spots" style="background:#FFBBBB">
@@ -18,5 +67,10 @@
 	<div class="parking-spots" style="background: #BBBBFF">
 		<h2> Close By Spots <h2>
 		<div ng-include="'templates/parkingSpot.html'" ng-repeat="spot in parkingSpots | proximity: max_distance"></div>
+	</div>
+	
+	<div class="parking-spots" style="background: #FFBBFF">
+		<h2> Price Filtered Spots <h2>
+		<div ng-include="'templates/parkingSpot.html'" ng-repeat="spot in parkingSpots | pricing: prices"></div>
 	</div>
 </section>
