@@ -35,18 +35,6 @@
       "price_month": 2688,
       "parking_type": "Street",
       "info": "Street Parking."
-    },
-    {
-      "_id": 4,
-      "lat": 43.653226,
-      "lon": -79.38318429999998,
-      "landlord": 4,
-      "tenant": 0,
-      "price_hour": 0,
-      "price_day": 0,
-      "price_month": 0,
-      "parking_type": "Driveway",
-      "info": "F"
     }
   ]
 }
