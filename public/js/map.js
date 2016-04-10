@@ -56,7 +56,7 @@ angular.module("parkmeApp")
 		return return_list;
 	};
 })
-.filter('pricing', function() 
+.filter('pricings', function() 
 {
 	return function(orig_list, pref)
 	{
@@ -71,19 +71,21 @@ angular.module("parkmeApp")
 			for (i = 0; i < num_spots; i++) 
 			{
 				spot = orig_list[i];
-				if 
-				(	
-					// Check if spot has a listed price for hour/day/month (if required)
-					((!pref.req_hour) || (spot.price_hour != 0)) &&
-					((!pref.req_day) || (spot.price_day != 0)) &&
-					((!pref.req_month) || (spot.price_month != 0)) &&
+				var valid = true;
+				if( pref.maxHour ){
 					
-					// Check if spot's price for hour/day/month is below maximum allowed (if required)
-					((pref.max_price_hour == 0) || (spot.price_hour <= pref.max_price_hour)) &&
-					((pref.max_price_day == 0) || (spot.price_day <= pref.max_price_day)) &&
-					((pref.max_price_month == 0) || (spot.price_month <= pref.max_price_month))
-				)
-				{
+					if( pref.maxHour > spot.price_hour ) valid = false;
+				}
+				if( pref.maxDay ){
+					
+					if( pref.maxDay > spot.price_day ) valid = false;
+				}
+				if( pref.maxMonth ){
+					
+					if( pref.maxMonth > spot.price_month ) valid = false;
+				}
+				if( valid ){
+					
 					filtered_list.push(spot);
 				}
 			}
@@ -92,22 +94,21 @@ angular.module("parkmeApp")
 		return return_list;
 	};
 })
-.controller('MapController', ['$scope', '$http','$filter', function($scope, $http) {
+.controller('MapController', ['$scope', '$http','$filter', function($scope, $http, $filter) {
+	
     var geocoder = new google.maps.Geocoder;
     var map;
     $scope.max_distance = 5;
 	$scope.parkingSpots = [];
-    $scope.prices =
-		{
-			req_hour:false,
-			req_day:false,
-			req_month:false,
-			max_price_hour:0,
-			max_price_day:0,
-			max_price_month:0
-		}
+	$scope.filteredSpots = [];
+	
+	var input = document.getElementById('destination');
+	var autocomplete = new google.maps.places.Autocomplete(input);
+	google.maps.event.addListener(autocomplete, 'autocompleted', updatePosition); 
+	
     //geolocation button
     document.getElementById("geolocate").onclick = function(){
+		
         var geoSuccess = function(position) {
             var lat = position.coords.latitude;
             var lng = position.coords.longitude;
@@ -149,17 +150,9 @@ angular.module("parkmeApp")
                     console.log(spot.distance + "km away from location");
 				}
 				$scope.$digest();
+
+				filterOptions();
 			}
-		}
-        
-        $scope.change = function()
-		{
-			if (!$scope.prices.max_price_hour || isNaN($scope.prices.max_price_hour))
-				$scope.prices.max_price_hour = 0;
-			if (!$scope.prices.max_price_day || isNaN($scope.prices.max_price_day))
-				$scope.prices.max_price_day = 0;
-			if (!$scope.prices.max_price_month || isNaN($scope.prices.max_price_month))
-				$scope.prices.max_price_month = 0;
 		}
         
         // Helper functions below.
@@ -190,6 +183,7 @@ angular.module("parkmeApp")
 		}
     
     function mapCoordinates(postition) {
+		
         function initialize() {
         var mapProp = {
             center:postition,
@@ -207,21 +201,62 @@ angular.module("parkmeApp")
         initialize();
         $scope.updateSpotDistances();
     }
+	
+	//Use specified filters and module filters to filter. Filter.
+	function filterOptions(){
+		
+		var num_spots = $scope.parkingSpots.length;
+		var i, spot, spotPosition;
+		
+		var maxDist = 10;
+		if( $scope.maxDistance ){
+			
+			maxDist = $scope.maxDistance;
+		}
+		$scope.filteredSpots = $filter( "proximity" )( $scope.parkingSpots, maxDist );
+		
+		if( $scope.available ){
+			
+			$scope.filteredSpots = $filter( "notTaken" )( $scope.filteredSpots );
+		}
+		if( $scope.prices ){
+		
+			$scope.filteredSpots = $filter( "pricings" )( $scope.filteredSpots, $scope.prices );
+		}
+		
+		placeMarkers();
+	}
+	
+	//Places markers for filtered list
+	function placeMarkers(){
+		
+		num_spots = $scope.filteredSpots.length;
+		for (i = 0; i < num_spots; i++) 
+		{
+			spot = $scope.filteredSpots[i];
+			spotPosition = {lat:spot.lat, lng:spot.lon};
     
-    var input = document.getElementById('destination');
-	var autocomplete = new google.maps.places.Autocomplete(input);
-	google.maps.event.addListener(autocomplete, 'autocompleted', updatePosition); 
+			var image = "http://backpackingconnecticut.com/images/parking.png";
+			var marker=new google.maps.Marker({
+				position: spotPosition,
+				icon: image
+			});
+			
+			marker.setMap(map);
+		}
+	}
 
 	function updatePosition(){
-			// Extract the address components from the Google place result.
-			var place = autocomplete.getPlace();
-			if (place){
-                $scope.searchPosition = {lat: place.geometry.location.lat(), lng: place.geometry.location.lng()}
-				mapCoordinates(place.geometry.location);
-			}
+		// Extract the address components from the Google place result.
+		var place = autocomplete.getPlace();
+		if (place){
+			$scope.searchPosition = {lat: place.geometry.location.lat(), lng: place.geometry.location.lng()}
+			mapCoordinates(place.geometry.location);
 		}
+	}
     
     $scope.submit = function(){
+		
         var address = input.value;
         function codeAddress() {
         geocoder.geocode( { 'address': address}, function(results, status) {

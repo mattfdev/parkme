@@ -25,29 +25,74 @@
 
 <!-- Map -->
 <div id="mapView" ng-controller="MapController">
-<div class = "row">
-  <div class="col-md-12">
-      <form class="form-inline" ng-submit="submit()">
-          <div class="form-group width-50">
-              <input type="text" class="form-control" id="destination" ng-model="destination" placeholder="Input a Destination" style="width:100%">
-          </div>
-          <input type="submit" class="btn btn-default" ></button>
-          <button type="button" class="btn btn-default" id="geolocate" aria-label="Left Align">
-            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-          </button>
-          <button type="button" class="btn btn-default" id="postspot" aria-label="Left Align">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            Post Parking Spot
-          </button>
-      </form>
-	  
- </div>
-</div>
-<br>
-<div class="row">
-    <div class="col-md-12">
-              <div id="googleMap" style="width:100%;height:500px;"></div>
-              <br>
-          </div>
-</div>
+	<form class="form-inline" ng-submit="submit()">
+		<div class="row">
+			<div class="col-md-12">
+				  <div class="form-group width-50">
+					  <input type="text" class="form-control" id="destination" ng-model="destination" placeholder="Input a Destination" style="width:100%">
+				  </div>
+				  <input type="submit" class="btn btn-default" ></button>
+				  <button type="button" class="btn btn-default" id="geolocate" aria-label="Left Align">
+					<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+				  </button>
+				  <button type="button" class="btn btn-default" id="postspot" aria-label="Left Align">
+					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					Post Parking Spot
+				  </button>   
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapse">
+							Filter Options
+						</button>
+					</div> 
+					<div id="collapse" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="col-md-3">
+								<div class="checkbox">
+								  <label><input type="checkbox" ng-model="available"> List only available Spots</label>
+								</div>
+							</div>
+							<div class="col-md-9">
+								<p>Maximum Pricing:</p>
+							</div>
+							<div class="col-md-3">
+								<p>
+									Maximum Distance (km)<br>
+									Defaults to 10km<br>
+								</p>
+								<input class="form-control" type="number" step="0.001" ng-model="maxDistance" max="10"/><br>
+							</div>
+							<div class="col-md-3">
+								<br>
+								<p>$ Per Hour</p>
+								<input class="form-control" step='0.01' type="number" ng-model="prices.maxHour"/>
+							</div>
+							<div class="col-md-3">
+								<br>
+								<p>$ Per Day</p>
+								<input class="form-control" step='0.01' type="number" ng-model="prices.maxDay"/>
+							</div>
+							<div class="col-md-3">
+								<br>
+								<p>$ Per Month</p>
+								<input class="form-control" step='0.01' type="number" ng-model="prices.maxMonth"/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	<br>
+	<div class="row">
+		<div class="col-md-12">
+			<div id="googleMap" style="width:100%;height:500px;"></div>
+			<br>
+		</div>
+	</div>
 </div>

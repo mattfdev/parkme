@@ -35,6 +35,18 @@
       "price_month": 2688,
       "parking_type": "Street",
       "info": "Street Parking."
+    },
+    {
+      "_id": 4,
+      "lat": 43.7346209,
+      "lon": -79.45092720000002,
+      "landlord": 4,
+      "tenant": 0,
+      "price_hour": 2,
+      "price_day": 8,
+      "price_month": 30,
+      "parking_type": "Underground",
+      "info": "Parking near Wilson Station."
     }
   ]
 }
