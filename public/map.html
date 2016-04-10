@@ -52,7 +52,7 @@
 						<div class="panel-body">
 							<div class="col-md-3">
 								<div class="checkbox">
-								  <label><input type="checkbox" ng-model="available"> List only available Spots</label>
+								  <label><input type="checkbox" ng-model="available" ng-change="updateFilters()">List only available spots</label>
 								</div>
 							</div>
 							<div class="col-md-9">
@@ -61,24 +61,23 @@
 							<div class="col-md-3">
 								<p>
 									Maximum Distance (km)<br>
-									Defaults to 10km<br>
 								</p>
-								<input class="form-control" type="number" step="0.001" ng-model="maxDistance"/><br>
+								<input class="form-control" type="number" step="1" min="1" ng-model="maxDistance" ng-change="updateFilters()"/><br>
 							</div>
 							<div class="col-md-3">
 								<br>
 								<p>$ Per Hour</p>
-								<input class="form-control" step='0.01' type="number" ng-model="prices.maxHour"/>
+								<input class="form-control" step='0.01' type="number" min="0" ng-model="prices.maxHour" ng-change="updateFilters()"/>
 							</div>
 							<div class="col-md-3">
 								<br>
 								<p>$ Per Day</p>
-								<input class="form-control" step='0.01' type="number" ng-model="prices.maxDay"/>
+								<input class="form-control" step='0.01' type="number" min="0" ng-model="prices.maxDay" ng-change="updateFilters()"/>
 							</div>
 							<div class="col-md-3">
 								<br>
 								<p>$ Per Month</p>
-								<input class="form-control" step='0.01' type="number" ng-model="prices.maxMonth"/>
+								<input class="form-control" step='0.01' type="number" min="0" ng-model="prices.maxMonth" ng-change="updateFilters()"/>
 							</div>
 						</div>
 					</div>

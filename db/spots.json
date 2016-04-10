@@ -68,7 +68,7 @@
       "landlord": 1,
       "username": "sadclown",
       "email": "sadclown@clowns.com",
-      "tenant": 0,
+      "tenant": 1,
       "price_hour": 0.02,
       "price_day": 0.05,
       "price_month": 0.27,

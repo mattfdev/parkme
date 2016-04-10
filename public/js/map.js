@@ -74,15 +74,15 @@ angular.module("parkmeApp")
 				var valid = true;
 				if( pref.maxHour ){
 					
-					if( pref.maxHour > spot.price_hour ) valid = false;
+					if( pref.maxHour < spot.price_hour ) valid = false;
 				}
 				if( pref.maxDay ){
 					
-					if( pref.maxDay > spot.price_day ) valid = false;
+					if( pref.maxDay < spot.price_day ) valid = false;
 				}
 				if( pref.maxMonth ){
 					
-					if( pref.maxMonth > spot.price_month ) valid = false;
+					if( pref.maxMonth < spot.price_month ) valid = false;
 				}
 				if( valid ){
 					
@@ -97,11 +97,12 @@ angular.module("parkmeApp")
 .controller('MapController', ['$scope', '$http','$filter', function($scope, $http, $filter) {
 	
     var geocoder = new google.maps.Geocoder;
-    var map;
+    var map = null, mapMarkers = [];
     $scope.makerInfoArray = [];
     $scope.max_distance = 5;
 	$scope.parkingSpots = [];
 	$scope.filteredSpots = [];
+	$scope.maxDistance = 10;
 	
 	var input = document.getElementById('destination');
 	var autocomplete = new google.maps.places.Autocomplete(input);
@@ -203,6 +204,11 @@ angular.module("parkmeApp")
         $scope.updateSpotDistances();
     }
 	
+	$scope.updateFilters = function()
+	{
+		filterOptions();
+	}
+	
 	//Use specified filters and module filters to filter. Filter.
 	function filterOptions(){
 		
@@ -210,26 +216,37 @@ angular.module("parkmeApp")
 		var i, spot, spotPosition;
 		
 		var maxDist = 10;
-		if( $scope.maxDistance ){
-			
+		if( $scope.maxDistance )
+		{
 			maxDist = $scope.maxDistance;
 		}
-		$scope.filteredSpots = $filter( "proximity" )( $scope.parkingSpots, maxDist );
 		
-		if( $scope.available ){
-			
+		$scope.filteredSpots = $filter( "proximity" )( $scope.parkingSpots, maxDist );
+		if( $scope.available )
+		{
 			$scope.filteredSpots = $filter( "notTaken" )( $scope.filteredSpots );
 		}
-		if( $scope.prices ){
-		
+		if( $scope.prices )
+		{
 			$scope.filteredSpots = $filter( "pricings" )( $scope.filteredSpots, $scope.prices );
 		}
 		
+		clearMarkers();
 		placeMarkers();
 	}
 	
+	function clearMarkers() 
+	{
+		for (var i = 0; i < mapMarkers.length; i++) 
+		{
+			mapMarkers[i].setMap(null);
+        }
+    }
+	
 	//Places markers for filtered list
-	function placeMarkers(){
+	function placeMarkers()
+	{
+		mapMarkers = [];
 		var spot,spotPosition;
 		num_spots = $scope.filteredSpots.length;
 		for (var i = 0; i < num_spots; i++) 
@@ -250,9 +267,9 @@ angular.module("parkmeApp")
             'or is available at a discounted rate of <strong> $' + spot.price_day + ' a day or $' + spot.price_month +
             ' a month </strong> </p> </div>';
             var infowindow = new google.maps.InfoWindow();
-			bindInfoWindow(marker, map, infowindow, contentString); 
+			bindInfoWindow(marker, map, infowindow, contentString);
 			marker.setMap(map);
-
+			mapMarkers.push(marker);
 		}
 	}
 	
