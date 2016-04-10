@@ -25,6 +25,11 @@ body {
     z-index:99;
 }
 
+.logo{
+    
+	height: 125%;
+}
+
 div.parking-spots
 {
 	 margin: 15px;
