@@ -249,16 +249,20 @@ angular.module("parkmeApp")
             '<p class="parkingPricing"> This spot costs $'+spot.price_hour+' an hour '+
             'or is available at a discounted rate of $' + spot.price_day + ' a day or $' + spot.price_month +
             ' a month </p> </div>';
-            var infowindow = new google.maps.InfoWindow({
-                                        content: contentString
-                                    });
+            var infowindow = new google.maps.InfoWindow();
+			bindInfoWindow(marker, map, infowindow, contentString); 
 			marker.setMap(map);
-            marker.addListener('click', function() {
-                        infowindow.open(map, this);
-                    });
 
 		}
 	}
+	
+	function bindInfoWindow(marker, map, infowindow, html) {
+		
+		marker.addListener('click', function() {
+			infowindow.setContent(html);
+			infowindow.open(map, this);
+		});
+	} 
 
 	function updatePosition(){
 		// Extract the address components from the Google place result.
