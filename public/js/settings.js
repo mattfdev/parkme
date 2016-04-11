@@ -11,6 +11,7 @@ angular.module("parkmeApp")
 	var rentals = [];
 	$scope.users = [];
 	$scope.spots = [];
+	$scope.allSpots = [];
 	
 	$http.get("/accountInfo").then(
 	function success(response)
@@ -22,9 +23,9 @@ angular.module("parkmeApp")
 		$http.get("/parkingSpots").then(
 			function success(response)
 			{
-				$scope.spots = response.data.location;
-				console.log($scope.spots);
-				$scope.printUserSpotsInformation();
+				$scope.allSpots = response.data.location;
+				console.log($scope.allSpots);
+				$scope.filterUserSpots();
 			},
 			function error(response)
 			{
@@ -54,7 +55,7 @@ angular.module("parkmeApp")
 		}
 	}
 	
-	$scope.printUserSpotsInformation = function()
+	$scope.filterUserSpots = function()
 	{
 		if($scope.spots)
 		{
@@ -63,12 +64,9 @@ angular.module("parkmeApp")
 			var spotsOutput = "";
 			for( var i = 0; i < numSpots; i++ ){
 				
-				var spot = $scope.spots[ userSpots[i] - 1 ];
-				//TODO
-				spotsOutput += "<span>" + spot.parking_type + "</span>"
+				var spot = $scope.allSpots[ userSpots[i] - 1 ];
+				$scope.spots.push( spot );
 			}
-			
-			document.getElementById( "spots" ).innerHTML = spotsOutput;
 		}		
 	}
 	
