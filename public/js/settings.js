@@ -9,8 +9,8 @@ angular.module("parkmeApp")
 	var last_name = "";
 	var user = "";
 	var rentals = [];
-	$scope.users = "";
-	
+	$scope.users = [];
+	$scope.spots = [];
 	
 	$http.get("/accountInfo").then(
 	function success(response)
@@ -18,6 +18,19 @@ angular.module("parkmeApp")
 		$scope.users = response.data.users;
 		console.log($scope.users);
 		$scope.printInformation();
+		
+		$http.get("/parkingSpots").then(
+			function success(response)
+			{
+				$scope.spots = response.data.location;
+				console.log($scope.spots);
+				$scope.printUserSpotsInformation();
+			},
+			function error(response)
+			{
+				console.log(response);
+				alert("Unable to check spots!");
+			});
 	},
 	function error(response)
 	{
@@ -39,6 +52,24 @@ angular.module("parkmeApp")
 			document.getElementById("last").innerHTML = last_name;
 			
 		}
+	}
+	
+	$scope.printUserSpotsInformation = function()
+	{
+		if($scope.spots)
+		{
+			var userSpots = $scope.users[user_id - 1].spots;
+			var numSpots = userSpots.length;
+			var spotsOutput = "";
+			for( var i = 0; i < numSpots; i++ ){
+				
+				var spot = $scope.spots[ userSpots[i] - 1 ];
+				//TODO
+				spotsOutput += "<span>" + spot.parking_type + "</span>"
+			}
+			
+			document.getElementById( "spots" ).innerHTML = spotsOutput;
+		}		
 	}
 	
 	$scope.showPassword = function()
