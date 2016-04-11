@@ -2,11 +2,6 @@ body
 {	
     padding-top: 70px;
 }
-@media (max-width: 768px) {
-    body {
-        padding-top: 210px;
-    }
-}
 
 #splash
 {

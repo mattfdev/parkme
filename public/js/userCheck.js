@@ -12,6 +12,9 @@ window.onload = function() {
 		html += '<li><a href="#" onclick="return logout();"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a></li>';
 		document.getElementById( "userCheck" ).innerHTML = html;	
 	}
+    $(".navbar-nav li a").click(function(event) {
+    $(".navbar-collapse").collapse('hide');
+        });
 }
 
 function logout() {
