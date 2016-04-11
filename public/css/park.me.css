@@ -50,6 +50,11 @@ body
 		width: 90%;
 		height: 125%;
 	}
+	
+	.hide-on-mobile {
+		
+		display: none;
+	}
 }
 
 .dimmer{
