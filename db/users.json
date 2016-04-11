@@ -56,6 +56,15 @@
       "first": "Mr",
       "last": "Potato",
       "spots": []
+    },
+    {
+      "_id": 6,
+      "username": "bobthebuilder",
+      "password": "bobspassword",
+      "email": "bobthebuilder@gmail.com",
+      "first": "Bob",
+      "last": "The Damn Builder",
+      "spots": []
     }
   ]
 }

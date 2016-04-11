@@ -41,7 +41,7 @@ angular.module("parkmeApp")
 							}
 						} );
 
-						var validObj = validateSignup( match, pass, pass2 );
+						var validObj = validateSignup( match, pass, pass2, email );
 
 						if( validObj.valid ){
 							
@@ -78,28 +78,38 @@ angular.module("parkmeApp")
 			}	
 	
 		};
+		
+		function validateSignup( match, password, password2, email ) {
+
+			var valid = true;
+			var alert = "";
+			
+			if( match ){
+				
+				alert += "Username already exists.";
+				valid = false;
+			}
+			if( password.length < 6 || password.length > 20 ){
+				
+				alert += "\nPassword not between 6 and 20 characters.";
+				valid = false;
+			}
+			if( password != password2 ){
+				
+				alert += "\nPasswords do not match.";
+				valid = false;
+			}
+
+			var atpos = email.indexOf("@");
+			var dotpos = email.lastIndexOf(".");
+			
+			if ( atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length ) {
+
+				alert += "\nNot a valid email.";
+				valid = false;
+			}
+			
+			return {"valid": valid, "alert": alert};
+		}
 }]);
 
-function validateSignup( match, password, password2 ) {
-
-	var valid = true;
-	var alert = "";
-	
-	if( match ){
-		
-		alert += "Username already exists.";
-		valid = false;
-	}
-	if( password.length < 6 || password.length > 20 ){
-		
-		alert += "\nPassword not between 6 and 20 characters.";
-		valid = false;
-	}
-	if( password != password2 ){
-		
-		alert += "\nPasswords do not match.";
-		valid = false;
-	}
-	
-	return {"valid": valid, "alert": alert};
-}
