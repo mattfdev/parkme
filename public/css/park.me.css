@@ -32,8 +32,24 @@ body
     visibility: hidden;
     position: absolute;
     z-index: 100;
+	top: 10%;
+	left: 30%;
     width: 40%;
     height: 80%;
+}
+
+@media (max-width: 768px) {
+	
+	#postbox{
+	
+		visibility: hidden;
+		position: absolute;
+		top: 10%;
+		left: 5%;
+		z-index: 100;
+		width: 90%;
+		height: 125%;
+	}
 }
 
 .dimmer{

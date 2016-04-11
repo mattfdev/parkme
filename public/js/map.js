@@ -334,8 +334,6 @@ angular.module("parkmeApp")
 			document.body.appendChild( dimmer );
 
 			postbox.style.visibility = 'visible';
-			postbox.style.top = "10%";
-			postbox.style.left = "30%";
 			return false;
 		}
 	}
