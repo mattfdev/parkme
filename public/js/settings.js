@@ -65,6 +65,17 @@ angular.module("parkmeApp")
 			for( var i = 0; i < numSpots; i++ ){
 				
 				var spot = $scope.allSpots[ userSpots[i] - 1 ];
+				if( spot.tenant == 0 ){
+					
+					spot.available = "Available";
+					spot.css = "color:green";
+				}
+				else{
+					
+					spot.available = "Rented";
+					spot.css = "color:red";
+				}
+				
 				$scope.spots.push( spot );
 			}
 		}		
@@ -173,6 +184,32 @@ angular.module("parkmeApp")
 				
 				alert( "Error changing information." );
 			});		
+	}
+	
+	$scope.changeAvailability = function( spotId )
+	{
+		var updatedSpot = $scope.allSpots[ spotId - 1 ];
+		if( updatedSpot.tenant == 0 ){
+			
+			updatedSpot.tenant = 1;
+		}
+		else{
+			
+			updatedSpot.tenant = 0;
+		}
+		delete updatedSpot.available;
+		delete updatedSpot.css;
+
+		$http.post('updateSpot', updatedSpot)
+			.success( function( response ){	
+			
+				alert( "Successfully updated availability" );
+				location.reload();
+			} )
+			.error( function( response ){
+				
+				alert( "Error updating spot availability." );
+			});
 	}
 }]);
 

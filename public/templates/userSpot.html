@@ -1,0 +1,19 @@
+<div class="panel panel-info">
+	<div class="panel-heading"><strong>{{spot.address}}</strong></div>
+	<div class="panel-body">
+		<span style="white-space:nowrap;"><strong>Hourly Price:</strong> ${{spot.price_hour}}</span>
+		<br>
+		<span style="white-space:nowrap;"><strong>Daily Price:</strong> ${{spot.price_day}}</span>
+		<br>
+		<span style="white-space:nowrap;"><strong>Monthly Price:</strong> ${{spot.price_month}}</span>
+		<br>
+		<span style="white-space:nowrap;"><strong>Parking Type:</strong> {{spot.parking_type}}</span>
+		<br>
+		<strong>Other Information:</strong> {{spot.info}}
+	</div>
+	<div class="panel-footer">
+		<span style="font-size:24px; {{spot.css}}"><strong>{{spot.available}}</strong></span>
+		<button class="btn btn-default pull-right" ng-click="changeAvailability( spot._id )">Change Availability</button>
+		<div class="clearfix"></div>
+	</div>
+</div>

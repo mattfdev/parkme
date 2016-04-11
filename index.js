@@ -77,6 +77,15 @@ app.post("/changeInfo", function(req, res){
 	});
 });
 
+app.post("/updateSpot", function(req, res){
+	var replaceSpot = req.body;
+	var obj = db.getSync("spots");
+	obj.location[replaceSpot._id-1] = replaceSpot;
+	db.save("spots", obj, function(err){
+		res.end();
+	});
+});
+
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
 })

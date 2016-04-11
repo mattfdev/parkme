@@ -3,25 +3,25 @@
 		<div class="col-md-4">
 			<div class="panel panel-info">
 				<div class="panel-heading">
-					<span>Account Information</span>
+					<span><strong>Account Information</strong></span>
 				</div>
 				<div class="panel-body">
-					<span>Username: </span>
+					<span><strong>Username:</strong> </span>
 					<span id="username"></span>
 					<br>
-					<span>Email: </span>
+					<span><strong>Email:</strong> </span>
 					<span id="email"></span>
 					<br>
-					<span>First Name: </span>
+					<span><strong>First Name:</strong> </span>
 					<span id="first"></span>
 					<br>
-					<span>Last Name: </span>
+					<span><strong>Last Name:</strong> </span>
 					<span id="last"></span>
 				</div>
 			</div>
 			<div class="panel panel-info">
 				<div class="panel-heading">
-					<span>Change Password/Email</span>
+					<span><strong>Change Password/Email</strong></span>
 				</div>
 				<div class="panel-body">
 					<div id="changePasswordField" style="display:none;">
@@ -54,9 +54,8 @@
 			</div>
 		</div>
 		<div class="col-md-8">
-			Place holder text. Area for spots owned by user<br>
-			<div id="spots">
-			</div>
+			<p style="font-size:large; white-space:nowrap;"><strong>Parking Spots</strong></p>
+				<div ng-include="'templates/userSpot.html'" ng-repeat="spot in spots"></div>
 		</div>
 	</div>
 </div>
