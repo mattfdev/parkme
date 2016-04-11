@@ -50,6 +50,9 @@ body
 		width: 90%;
 		height: 125%;
 	}
+}
+
+@media (max-width: 992px) {
 	
 	.hide-on-mobile {
 		
