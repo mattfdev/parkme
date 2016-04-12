@@ -119,6 +119,21 @@
       "price_month": 100,
       "parking_type": "Driveway",
       "info": "Thank you"
+    },
+    {
+      "_id": 9,
+      "address": "Scarborough, Toronto, ON, Canada",
+      "lat": 43.7764258,
+      "lon": -79.2317521,
+      "landlord": 1,
+      "username": "sadclown",
+      "email": "sadclown@clowns.com",
+      "tenant": 0,
+      "price_hour": 5,
+      "price_day": 10,
+      "price_month": 500,
+      "parking_type": "Driveway",
+      "info": "It's amazing!"
     }
   ]
 }

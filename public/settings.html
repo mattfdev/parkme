@@ -1,6 +1,7 @@
 <div ng-controller="CheckSettingsController">
 	<div class="row">
 		<div class="col-md-4">
+			<p style="font-size:large; white-space:nowrap; text-decoration:underline"><strong>User Settings</strong></p>
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<span><strong>Account Information</strong></span>
@@ -54,7 +55,7 @@
 			</div>
 		</div>
 		<div class="col-md-8">
-			<p style="font-size:large; white-space:nowrap;"><strong>Parking Spots</strong></p>
+			<p style="font-size:large; white-space:nowrap; text-decoration:underline"><strong>Parking Spots</strong></p>
 				<div ng-include="'templates/userSpot.html'" ng-repeat="spot in spots"></div>
 		</div>
 	</div>

@@ -103,6 +103,9 @@ angular.module("parkmeApp")
 	$scope.parkingSpots = [];
 	$scope.filteredSpots = [];
 	$scope.maxDistance = 10;
+	$scope.priceHour = 0;
+	$scope.priceDay = 0;
+	$scope.priceMonth = 0;
 	
 	var input = document.getElementById('destination');
 	var autocomplete = new google.maps.places.Autocomplete(input);
@@ -308,32 +311,26 @@ angular.module("parkmeApp")
     }
     
 	//Post Parking Spot button
-    document.getElementById( "postspot" ).onclick = function(){
-
-		if( sessionStorage.getItem( "user._id" ) == null ){
-			
-			alert( "Please login before posting." )
+    document.getElementById( "postspot" ).onclick = function()
+	{
+		if( sessionStorage.getItem( "user._id" ) == null )
+		{
+			alert( "Please login before posting." );
 			window.location.href = "#/login";
 			location.reload();
 		}
-		else{
+		else
+		{
+			var postbox = document.getElementById( "postbox" );
+			var dimmer = document.getElementById( "dimmer" );
+			dimmer.style.display = 'block';
+			postbox.style.display = 'block';
 			
-			var postbox = document.getElementById( "postbox" ),
-				dimmer = document.createElement( "div" );
-
-			dimmer.setAttribute( "id", "dimmer" );
-			dimmer.style.width =  "100%";
-			dimmer.style.height = "100%";
-			dimmer.className = 'dimmer';
-
-			dimmer.onclick = function(){
-				document.body.removeChild( this );   
-				postbox.style.visibility = 'hidden';
+			dimmer.onclick = function()
+			{
+				dimmer.style.display = 'none';
+				postbox.style.display = 'none';
 			}
-
-			document.body.appendChild( dimmer );
-
-			postbox.style.visibility = 'visible';
 			return false;
 		}
 	}
