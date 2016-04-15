@@ -1,13 +1,19 @@
 <div ng-controller="AboutController">
-	<div class="jumbotron">
-		<h1>About Park Me</h1>
+	<div>
+		<h2 class="bg-info text-primary" style="padding:5px;padding-left:10px;">About Park Me</h2>
 		<ul>
-			<li class="point">Park Me is a website focused on taking the pain out of parking.</li>
-			<li class="point">You can quickly and easily find parking spots offered by other users.</li>
-			<li class="point">You can also effortlessly post a parking spot you own for others to rent.</li>
+			<li>
+				Park Me is a website focused on taking the pain out of parking.
+			</li>
+			<li>
+				You can quickly and easily find parking spots offered by other users.
+			</li>
+			<li>
+				You can also effortlessly post a parking spot you own for others to rent.
+			</li>
 		</ul>
 	</div>
-  
+
 	<div class="row">
 		<div class="col-md-6">
 			<div class="panel panel-info">
@@ -18,25 +24,49 @@
 					<ol>
 						<li>
 							<p><strong>Selecting A Destination</strong></p>
-							<p>On the home page, you must select a destination (the geographical area you are interested in finding a parking spot). Most likely, you want to search in an area around your current location. To do this, simply click on the geolocate button, which looks like this: <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></p>
-							</p><u>If you want to search a specific area other than your current location, use the destination text input box.</u> As you type, a list of suggested locations will pop up. If the location you are interested in pops up, feel free to click on it so that you don't have to type out the whole thing yourself. Now that you have the desired location in the text box, you can instruct Park Me to search for parking spots. To do this, simply press the Enter key while you still have the input text box selected. Alternatively, you can press the search button, which looks like this: <span class="glyphicon glyphicon-search" aria-hidden="true"></span></p>
+							<p>
+								On the home page, you must select a destination (the geographical area you are interested in finding a parking spot). Most likely, you want to search in an area around your current location. To do this, simply click on the geolocate button, which looks
+								like this:
+								<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+							</p>
+							<p>
+								If you want to search a specific area other than your current location, use the destination text input box. As you type, a list of suggested locations will pop up. If the location you are interested in pops up, feel free to click on it so that you don't
+								have to type out the whole thing yourself. Now that you have the desired location in the text box, you can instruct Park Me to search for parking spots. To do this, simply press the Enter key while you still have the input text box selected. Alternatively,
+								you can press the search button, which looks like this:
+								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+							</p>
 						</li>
 						<li>
 							<p><strong>Filtering Only The Spots You Want</strong></p>
-							<p>If you want more control over the spots offered to you, select the Filter Options button, which uses the following icon: <span class="glyphicon glyphicon-filter" aria-hidden="true"></span></p>
-							<p>You can specify the maximum radius, in kilometers, from the provided search location to display parking spots. For example, if you are interested specifically in parking spots around a particular intersection then you probably want to limit the maximum distance to a very small value so that the map isn't cluttered with parking spots you don't care about.</p>
-							<p>You can specify maximum prices, in dollars, of parking spots. This defaults to a value of 0 which indicates that you are interested in all prices for the given category. If you were to set the daily rate to a value of 15, then you would only see parking spots which cost $15 or less to rent for a day. This helps to remove expensive parking spots from the map which you aren't interested in, making it faster to find a spot which you are interested in.<p>
+							<p>
+								If you want more control over the spots offered to you, select the Filter Options button, which uses the following icon:
+								<span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
+							</p>
+							<p>
+								You can specify the maximum radius, in kilometers, from the provided search location to display parking spots. For example, if you are interested specifically in parking spots around a particular intersection then you probably want to limit the maximum
+								distance to a very small value so that the map isn't cluttered with parking spots you don't care about.
+							</p>
+							<p>
+								You can specify maximum prices, in dollars, of parking spots. This defaults to a value of 0 which indicates that you are interested in all prices for the given category. If you were to set the daily rate to a value of 15, then you would only see parking
+								spots which cost $15 or less to rent for a day. This helps to remove expensive parking spots from the map which you aren't interested in, making it faster to find a spot which you are interested in.
+							</p>
 						</li>
 						<li>
 							<p><strong>Picking A Spot</strong></p>
-							<p>On the map, parking spots are indicated by this icon: <img src="http://backpackingconnecticut.com/images/parking.png"></p>
-							<p>To view details about a spot you are potentially interested in, click on the parking spot icon. These details include prices about the rental and information about the user who is renting it out. If you like what you see, you can contact the landlord by sending an email to the address shown in the parking spot's information window.</p>
+							<p>
+								On the map, parking spots are indicated by this icon:
+								<img src="http://backpackingconnecticut.com/images/parking.png">
+							</p>
+							<p>
+								To view details about a spot you are potentially interested in, click on the parking spot icon. These details include prices about the rental and information about the user who is renting it out. If you like what you see, you can contact the landlord
+								by sending an email to the address shown in the parking spot's information window.
+							</p>
 						</li>
 					</ol>
 				</div>
 			</div>
 		</div>
-			
+
 		<div class="col-md-6">
 			<div class="panel panel-info">
 				<div class="panel-heading">
@@ -46,10 +76,12 @@
 					<ol>
 						<li>
 							<p><strong>Requirements</strong></p>
-							<p>If you wish to rent to other users, you must first create an account and login.</p>
+							<p>
+								If you wish to rent to other users, you must first create an account and login.
+							</p>
 							<ul>
 								<li>
-									To signup, go <a href="#/signup">here</a>. 
+									To signup, go <a href="#/signup">here</a>.
 								</li>
 								<li>
 									To login, go <a href="#/login">here</a>.
@@ -59,15 +91,32 @@
 						</li>
 						<li>
 							<p><strong>Posting A New Spot</strong></p>
-							<p>On the home page, click the Post New Parking Spot button, which uses this icon: <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></p>
-							<p>Fill out all the fields displayed. The location/address refers to the location of the parking spot you are renting out (not necessarily your own address).</p>
-							<p>The various rates refer to the price you are charging someone to use your parking spot. If, for example, you set the hourly rate to a value of 7, then you are indicating that someone can rent your parking spot for $7 per hour. By default, these prices are initially a value of 0 which indicates that you are not not interested in charging based on the given type of rate. For example, keeping the hourly rate value at 0 indicates to other users that you are not interested in charging by the hour.</p>
-							<p>The parking type and information fields exist to provide other users extra information which they may be interested in. For example, some users may not want to park their vehicles outdoors. If you provide sufficient information about your parking spot in these fields now, you won't need to deal with other users frequently asking for additional information later.</p>
+							<p>
+								On the home page, click the Post New Parking Spot button, which uses this icon:
+								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+							</p>
+							<p>
+								Fill out all the fields displayed. The location/address refers to the location of the parking spot you are renting out (not necessarily your own address).
+							</p>
+							<p>
+								The various rates refer to the price you are charging someone to use your parking spot. If, for example, you set the hourly rate to a value of 7, then you are indicating that someone can rent your parking spot for $7 per hour. By default, these prices
+								are initially a value of 0 which indicates that you are not not interested in charging based on the given type of rate. For example, keeping the hourly rate value at 0 indicates to other users that you are not interested in charging by the hour.
+							</p>
+							<p>
+								The parking type and information fields exist to provide other users extra information which they may be interested in. For example, some users may not want to park their vehicles outdoors. If you provide sufficient information about your parking spot
+								in these fields now, you won't need to deal with other users frequently asking for additional information later.
+							</p>
 						</li>
 						<li>
 							<p><strong>Controlling Posted Spots</strong></p>
-							<p>To edit parking spots you have posted in the past, head over to the <a href="#/settings">settings</a> page. To easily access the settings page in the future, click on the link in the navigation bar indicated by your own username next to this icon: <span class="glyphicon glyphicon-cog" aria-hidden="true"></span></p>
-							<p>In the settings page, you will see a list of parking spots you have posted. A parking spot can easily be marked as either Available or Rented by clicking on the Change Availability button for a particular parking spot. This button toggles between the two states. If a parking spot is marked as Available, then other users will continue to contact you about renting it. If a parking spot is marked as Rented, then the parking spot will <u>not</u> be visible to other users.</p>
+							<p>
+								To edit parking spots you have posted in the past, head over to the <a href="#/settings">settings</a> page. To easily access the settings page in the future, click on the link in the navigation bar indicated by your own username next to this icon:
+								<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+							</p>
+							<p>
+								In the settings page, you will see a list of parking spots you have posted. A parking spot can easily be marked as either Available or Rented by clicking on the Change Availability button for a particular parking spot. This button toggles between the
+								two states. If a parking spot is marked as Available, then other users will continue to contact you about renting it. If a parking spot is marked as Rented, then the parking spot will <span style="text-decoration:underline">not</span>								be visible to other users.
+							</p>
 						</li>
 					</ol>
 				</div>
