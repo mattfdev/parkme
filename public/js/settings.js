@@ -1,5 +1,5 @@
 angular.module("parkmeApp")
-.controller('CheckSettingsController', ['$scope', '$http', function($scope, $http) 
+.controller('CheckSettingsController', ['$scope', '$http', function($scope, $http)
 {
 
 	var username = sessionStorage.getItem("username");
@@ -12,19 +12,17 @@ angular.module("parkmeApp")
 	$scope.users = [];
 	$scope.spots = [];
 	$scope.allSpots = [];
-	
+
 	$http.get("/accountInfo").then(
 	function success(response)
 	{
 		$scope.users = response.data.users;
-		console.log($scope.users);
 		$scope.printInformation();
-		
+
 		$http.get("/parkingSpots").then(
 			function success(response)
 			{
 				$scope.allSpots = response.data.location;
-				console.log($scope.allSpots);
 				$scope.filterUserSpots();
 			},
 			function error(response)
@@ -38,10 +36,10 @@ angular.module("parkmeApp")
 		console.log(response);
 		alert("Unable to check users!");
 	});
-	
+
 	$scope.printInformation = function()
 	{
-		if($scope.users)
+		if($scope.users && user_id)
 		{
 			user = $scope.users[user_id - 1];
 			email = user.email;
@@ -51,36 +49,36 @@ angular.module("parkmeApp")
 			document.getElementById("email").innerHTML = email;
 			document.getElementById("first").innerHTML = first_name;
 			document.getElementById("last").innerHTML = last_name;
-			
+
 		}
 	}
-	
+
 	$scope.filterUserSpots = function()
 	{
-		if($scope.spots)
+		if($scope.spots && user_id)
 		{
 			var userSpots = $scope.users[user_id - 1].spots;
 			var numSpots = userSpots.length;
 			var spotsOutput = "";
 			for( var i = 0; i < numSpots; i++ ){
-				
+
 				var spot = $scope.allSpots[ userSpots[i] - 1 ];
 				if( spot.tenant == 0 ){
-					
+
 					spot.available = "Available";
 					spot.css = "color:green";
 				}
 				else{
-					
+
 					spot.available = "Rented";
 					spot.css = "color:red";
 				}
-				
+
 				$scope.spots.push( spot );
 			}
-		}		
+		}
 	}
-	
+
 	$scope.showPassword = function()
 	{
 		document.getElementById("changePasswordField").style.display = 'block';
@@ -88,7 +86,7 @@ angular.module("parkmeApp")
 		document.getElementById("changeEmailField").style.display = 'none';
 		document.getElementById("showEmail").style.display = 'block';
 	}
-	
+
 	$scope.showEmail = function()
 	{
 		document.getElementById("changeEmailField").style.display = 'block';
@@ -96,13 +94,13 @@ angular.module("parkmeApp")
 		document.getElementById("changePasswordField").style.display = 'none';
 		document.getElementById("showPassword").style.display = 'block';
 	}
-	
+
 	$scope.changePassword = function()
 	{
-		
+
 		var validObj = validateSignup($scope.newPass, $scope.newPass2);
-		
-		
+
+
 		if($scope.currentPass && $scope.newPass && $scope.newPass2)
 		{
 			var currentPassword = user.password;
@@ -140,12 +138,12 @@ angular.module("parkmeApp")
 			}
 		}
 	}
-	
+
 	$scope.changeEmail = function()
 	{
 		if($scope.currentEmail && $scope.newEmail)
 		{
-			
+
 			var currentEmail = email;
 			var validEmail = validateEmail( $scope.newEmail );
 			if(($scope.currentEmail == currentEmail) && (validEmail))
@@ -172,42 +170,42 @@ angular.module("parkmeApp")
 			}
 		}
 	}
-	
+
 	function changeInfo(newUser)
 	{
 		$http.post('/changeInfo', newUser)
-			.success( function( response ){	
+			.success( function( response ){
 				alert( "Succesfully changed information." );
 				location.reload();
 			} )
 			.error( function( response ){
-				
+
 				alert( "Error changing information." );
-			});		
+			});
 	}
-	
+
 	$scope.changeAvailability = function( spotId )
 	{
 		var updatedSpot = $scope.allSpots[ spotId - 1 ];
 		if( updatedSpot.tenant == 0 ){
-			
+
 			updatedSpot.tenant = 1;
 		}
 		else{
-			
+
 			updatedSpot.tenant = 0;
 		}
 		delete updatedSpot.available;
 		delete updatedSpot.css;
 
 		$http.post('updateSpot', updatedSpot)
-			.success( function( response ){	
-			
+			.success( function( response ){
+
 				alert( "Successfully updated availability" );
 				location.reload();
 			} )
 			.error( function( response ){
-				
+
 				alert( "Error updating spot availability." );
 			});
 	}
@@ -217,12 +215,12 @@ function validateSignup( password, password2 ) {
 
 	var valid = true;
 	var alert = "";
-	
+
 	if( password.length < 6 || password.length > 20 )
 	{
 		valid = false;
 	}
-	
+
 	return {"valid": valid, "alert": alert};
 }
 
