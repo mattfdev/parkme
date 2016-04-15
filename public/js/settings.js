@@ -3,6 +3,11 @@ angular.module("parkmeApp")
 {
 
 	var username = sessionStorage.getItem("username");
+	if (!username)
+	{
+		window.location.href = "#/login";
+		location.reload();
+	}
 	var user_id = parseInt(sessionStorage.getItem("user._id"));
 	var email = "";
 	var first_name = "";

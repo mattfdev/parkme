@@ -54,7 +54,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-8">
+		<div class="col-md-8" ng-show="spots.length">
 			<p style="font-size:large; white-space:nowrap; text-decoration:underline"><strong>Parking Spots</strong></p>
 				<div ng-include="'templates/userSpot.html'" ng-repeat="spot in spots"></div>
 		</div>
