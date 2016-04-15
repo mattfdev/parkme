@@ -35,6 +35,11 @@ body, html
     margin: 0px;
 }
 
+li.point
+{
+	font-size: 1.3em;
+}
+
 #dimmer
 {
 	display: none;

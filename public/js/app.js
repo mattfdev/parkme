@@ -26,4 +26,9 @@ angular.module("parkmeApp", ['ngRoute'])
 		controller: "CheckSettingsController"
 	
 	})
+	.when("/about", {
+		
+		templateUrl: "about.html",
+		controller: "AboutController"
+	})
 })
