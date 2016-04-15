@@ -98,6 +98,7 @@ angular.module("parkmeApp")
 
     var geocoder = new google.maps.Geocoder;
     var map = null, mapMarkers = [];
+	$scope.available = true;
     $scope.makerInfoArray = [];
     $scope.max_distance = 5;
 	$scope.parkingSpots = [];
